@@ -63,5 +63,10 @@ if [ -n "${MTU}" ]; then
   sudo ifconfig docker0 mtu ${MTU} up
 fi
 
+if [ -n "${DOCKER_USERNAME}" ]; then
+    INFO "Logging into docker: ${DOCKER_ENDPOINT}"
+    docker login ${DOCKER_ENDPOINT} -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+fi
+
 # Wait processes to be running
 entrypoint.sh
