@@ -880,6 +880,33 @@ func newRunnerPod(template corev1.Pod, runnerSpec v1alpha1.RunnerConfig, default
 		}...)
 	}
 
+	if dockerUsername := runner.Spec.DockerUsername; dockerUsername != nil && dockerdInRunner {
+		pod.Spec.Containers[0].Env = append(pod.Spec.Containers[0].Env, []corev1.EnvVar{
+			{
+				Name:  "DOCKER_USERNAME",
+				Value: *runner.Spec.DockerUsername,
+			},
+		}...)
+	}
+
+	if dockerPassword := runner.Spec.DockerPassword; dockerPassword != nil && dockerdInRunner {
+		pod.Spec.Containers[0].Env = append(pod.Spec.Containers[0].Env, []corev1.EnvVar{
+			{
+				Name:  "DOCKER_PASSWORD",
+				Value: *runner.Spec.DockerPassword,
+			},
+		}...)
+	}
+
+	if dockerEndpoint := runner.Spec.DockerEndpoint; dockerEndpoint != nil && dockerdInRunner {
+		pod.Spec.Containers[0].Env = append(pod.Spec.Containers[0].Env, []corev1.EnvVar{
+			{
+				Name:  "DOCKER_ENDPOINT",
+				Value: *runner.Spec.DockerEndpoint,
+			},
+		}...)
+	}
+
 	//
 	// /runner must be generated on runtime from /runnertmp embedded in the container image.
 	//
