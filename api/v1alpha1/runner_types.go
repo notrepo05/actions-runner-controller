@@ -139,12 +139,6 @@ type RunnerPodSpec struct {
 	EphemeralContainers []corev1.EphemeralContainer `json:"ephemeralContainers,omitempty"`
 
 	// +optional
-	DockerUsername *string `json:"dockerUsername,omitempty"`
-	// +optional
-	DockerPassword *string `json:"dockerPassword,omitempty"`
-	// +optional
-	DockerEndpoint *string `json:"dockerEndpoint,omitempty"`
-	// +optional
 	HostAliases []corev1.HostAlias `json:"hostAliases,omitempty"`
 
 	// RuntimeClassName is the container runtime configuration that containers should run under.
