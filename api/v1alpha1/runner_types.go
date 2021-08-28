@@ -68,12 +68,6 @@ type RunnerConfig struct {
 	// +optional
 	DockerRegistryMirror *string `json:"dockerRegistryMirror,omitempty"`
 	// +optional
-	DockerUsername *string `json:"dockerUsername,omitempty"`
-	// +optional
-	DockerPassword *string `json:"dockerPassword,omitempty"`
-	// +optional
-	DockerEndpoint *string `json:"dockerEndpoint,omitempty"`
-	// +optional
 	HostAliases []corev1.HostAlias `json:"hostAliases,omitempty"`
 	// +optional
 	VolumeSizeLimit *resource.Quantity `json:"volumeSizeLimit,omitempty"`
